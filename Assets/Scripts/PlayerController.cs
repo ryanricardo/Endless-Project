@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] protected Rigidbody2D rb2;
     [HideInInspector] private Vector3       startPos;
     [HideInInspector] private Vector3       endPos;
+    [HideInInspector] public static PlayerController instance;
     
 
     [Header("Moviment Atributtes")]
@@ -17,8 +18,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected float forceJump;
     [SerializeField] protected bool checkGround;
 
+    [Header("Touch Atributtes")]
+    [HideInInspector] public bool touchOne;
 
-    void Start()
+    void Awake()
+    {
+        instance = this;
+    }
+    
+    void Start()    
     {
         rb2 = GetComponent<Rigidbody2D>();    
     }
@@ -39,11 +47,13 @@ public class PlayerController : MonoBehaviour
 
             if(t.phase == TouchPhase.Began)
             {
+                touchOne = true;
                 startPos = t.position;
             }
 
             if(t.phase == TouchPhase.Ended)
             {
+                touchOne = false;
                 endPos = t.position;
                 Calcular();
             }
