@@ -87,6 +87,11 @@ public class PlayerController : MonoBehaviour
         rb2.AddForce(new Vector2(0, forceJump), ForceMode2D.Impulse);
     }
 
+    public void FunctionImpulseToBack()
+    {
+        rb2.AddForce(new Vector2(-2, 0), ForceMode2D.Impulse);
+    }
+
     protected void FunctionRestoreTime()
     {
         freeToShoot = true;

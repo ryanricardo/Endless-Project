@@ -30,5 +30,6 @@ public class Weapon : MonoBehaviour
     public void FunctionShoot()
     {
         Instantiate(prefabBullet, exitBullet.transform.position, Quaternion.identity);
+        PlayerController.instance.FunctionImpulseToBack();
     }
 }
