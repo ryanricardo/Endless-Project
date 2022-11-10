@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("Grounds Atributtes")]
     [HideInInspector] protected bool spawnGround;
 
+    
+
     void Awake()
     {
         instance = this;

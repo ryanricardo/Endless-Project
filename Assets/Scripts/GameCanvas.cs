@@ -12,6 +12,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] protected Button buttonContinue;
     [SerializeField] protected Button buttonMenu;
     [SerializeField] protected Button buttonQuit;
+    [SerializeField] protected TextMeshProUGUI textProScore;
     [SerializeField] protected TextMeshProUGUI textProButtonPause;
     [SerializeField] protected GameObject panelPause;
 
@@ -53,6 +54,11 @@ public class GameCanvas : MonoBehaviour
 
     void Update()
     {
-        
+        CanvasController();
+    }
+
+    protected void CanvasController()
+    {
+        textProScore.text = Mathf.FloorToInt(PlayerController.instance.currentScore).ToString() + "(" + PlayerPrefs.GetFloat("recordScore") + ")";
     }
 }

@@ -21,9 +21,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected float countDownToShoot;
     [SerializeField] protected bool freeToShoot;
     
-
     [Header("Touch Atributtes")]
     [HideInInspector] public bool touchOne;
+
+    [Header("Status Atributtes")]
+    [SerializeField] public float currentScore;
 
     void Awake()
     {
@@ -38,8 +40,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovimentController();
+        
+        currentScore += Time.deltaTime;
     }
-
+    
     protected void MovimentController()
     {
         checkGround = Physics2D.Linecast(transform.position, transformCheckGround.transform.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -60,6 +64,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
 
     private void Calcular()
     {
