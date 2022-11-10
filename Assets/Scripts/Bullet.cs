@@ -21,6 +21,14 @@ public class Bullet : MonoBehaviour
         BulletController();
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject, 0.1f);
+        }
+    }
+
     protected void BulletController()
     {
         rb2.AddForce(new Vector2(speedBullet, 0), ForceMode2D.Impulse);

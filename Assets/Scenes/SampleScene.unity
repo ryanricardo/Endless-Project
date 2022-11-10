@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformCheckGround: {fileID: 541749248}
-  speedMoviment: 5
+  speedMoviment: 0
   forceJump: 5
   checkGround: 0
   countDownToShoot: 1
@@ -1931,11 +1931,11 @@ GameObject:
   - component: {fileID: 1840786694}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1840786690
 SpriteRenderer:
   m_ObjectHideFlags: 0
