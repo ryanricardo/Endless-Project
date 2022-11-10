@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected float forceJump;
     [SerializeField] protected bool checkGround;
 
+    [Header("Weapon Atributtes")]
+    [SerializeField] protected float countDownToShoot;
+    [SerializeField] protected bool freeToShoot;
+    
+
     [Header("Touch Atributtes")]
     [HideInInspector] public bool touchOne;
 
@@ -67,16 +72,24 @@ public class PlayerController : MonoBehaviour
             FunctionJump();
         }
 
-        if(diference.y == diference.x)
-            touchOne = true;
-        else 
-            touchOne = false;
+        if(diference.y == diference.x 
+        && freeToShoot)
+        {
+            Weapon.instance.FunctionShoot();
+            freeToShoot = false;
+            Invoke("FunctionRestoreTime", countDownToShoot);
+        }
 
     }
 
     protected void FunctionJump()
     {
         rb2.AddForce(new Vector2(0, forceJump), ForceMode2D.Impulse);
+    }
+
+    protected void FunctionRestoreTime()
+    {
+        freeToShoot = true;
     }
 }
 

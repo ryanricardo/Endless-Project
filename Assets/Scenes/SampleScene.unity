@@ -263,6 +263,8 @@ MonoBehaviour:
   speedMoviment: 0
   forceJump: 5
   checkGround: 0
+  countDownToShoot: 1
+  freeToShoot: 1
   touchOne: 0
 --- !u!1 &519420028
 GameObject:

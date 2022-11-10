@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb2 = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, 2);
     }
 
     void Update()
