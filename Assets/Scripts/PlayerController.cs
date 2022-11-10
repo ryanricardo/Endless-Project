@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     
 
     [Header("Moviment Atributtes")]
-    [SerializeField] protected float speedMoviment;
     [SerializeField] protected float forceJump;
     [SerializeField] protected bool checkGround;
 
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
     protected void MovimentController()
     {
-        rb2.velocity = new Vector2(rb2.velocity.x + speedMoviment * Time.deltaTime, rb2.velocity.y);
         checkGround = Physics2D.Linecast(transform.position, transformCheckGround.transform.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if(Input.touchCount > 0)

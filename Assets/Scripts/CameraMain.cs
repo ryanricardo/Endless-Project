@@ -31,7 +31,7 @@ public class CameraMain : MonoBehaviour
         Vector3 currentPos = new Vector3(transform.position.x, 0, -10);
         Vector3 newPos = new Vector3(PlayerController.instance.transform.position.x, 0, -10);
 
-        transform.position = Vector3.MoveTowards(currentPos, newPos, speedCamera * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(currentPos, newPos, speedCamera);
 
 
     }
