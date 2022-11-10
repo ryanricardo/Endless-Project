@@ -5,9 +5,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Components")]
+    [SerializeField] protected AudioClip clipShoot;
     [SerializeField] protected Transform exitBullet;
     [SerializeField] protected GameObject prefabBullet;
     [HideInInspector] public static Weapon instance;
+    [HideInInspector] protected AudioSource audioSource;
 
     [Header("Weapon Atributtes")]
     [SerializeField] protected float countDownToShoot;
@@ -20,7 +22,7 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,6 +32,7 @@ public class Weapon : MonoBehaviour
     public void FunctionShoot()
     {
         Instantiate(prefabBullet, exitBullet.transform.position, Quaternion.identity);
+        audioSource.PlayOneShot(clipShoot);
         PlayerController.instance.FunctionImpulseToBack();
     }
 }
