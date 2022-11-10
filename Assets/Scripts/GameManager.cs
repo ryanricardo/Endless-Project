@@ -22,11 +22,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         spawnGround = true;
+        Time.timeScale = 1;
     }
 
     void Update()
     {
         SpawnGroundController();
+        GameOverPlayerController();
     }
 
     protected void SpawnGroundController()
@@ -39,6 +41,12 @@ public class GameManager : MonoBehaviour
             StartCoroutine(FuctionSpawnGround(randomNumber));
             spawnGround = false;
         }
+    }
+
+    protected void GameOverPlayerController()
+    {
+        if(CODeathPlayer.instance.collisionPlayer)
+            GameCanvas.instance.FunctionGameOver();
     }
 
     protected IEnumerator FuctionSpawnGround(float time)

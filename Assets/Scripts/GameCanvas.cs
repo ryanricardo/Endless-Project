@@ -9,13 +9,20 @@ public class GameCanvas : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] protected Button buttonPause;
-    [SerializeField] protected Button buttonContinue;
-    [SerializeField] protected Button buttonMenu;
-    [SerializeField] protected Button buttonQuit;
+    [SerializeField] protected Button[] buttonContinue;
+    [SerializeField] protected Button[] buttonMenu;
+    [SerializeField] protected Button[] buttonQuit;
     [SerializeField] protected TextMeshProUGUI textProScore;
     [SerializeField] protected TextMeshProUGUI textProButtonPause;
     [SerializeField] protected GameObject panelPause;
+    [SerializeField] protected GameObject panelGameOver;
+    [HideInInspector] public static GameCanvas instance;
 
+    void Awake()
+    {
+        instance = this;
+    }
+    
     void Start()
     {
         buttonPause.onClick.AddListener(delegate
@@ -34,22 +41,35 @@ public class GameCanvas : MonoBehaviour
             }
         });
 
-        buttonContinue.onClick.AddListener(delegate
+        buttonContinue[0].onClick.AddListener(delegate
         {
             panelPause.gameObject.SetActive(false);
             textProButtonPause.text = "I I";
             Time.timeScale = 1;
         });
 
-        buttonMenu.onClick.AddListener(delegate
+        buttonContinue[1].onClick.AddListener(delegate
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(1);
         });
 
-        buttonQuit.onClick.AddListener(delegate
+        
+
+        for(int i = 0; i < buttonMenu.Length; i++)
         {
-            Application.Quit();
-        });
+            buttonMenu[i].onClick.AddListener(delegate
+            {
+                SceneManager.LoadScene("Menu");
+            });
+        }
+
+        for(int i = 0; i < buttonQuit.Length; i++)
+        {
+            buttonQuit[i].onClick.AddListener(delegate
+            {
+                Application.Quit();
+            });
+        }
     }
 
     void Update()
@@ -60,5 +80,11 @@ public class GameCanvas : MonoBehaviour
     protected void CanvasController()
     {
         textProScore.text = Mathf.FloorToInt(PlayerController.instance.currentScore).ToString() + "(" + PlayerPrefs.GetFloat("recordScore") + ")";
+    }
+
+    public void FunctionGameOver()
+    {
+        Time.timeScale = 0;
+        panelGameOver.gameObject.SetActive(true);
     }
 }
