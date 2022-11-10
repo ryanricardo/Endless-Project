@@ -22,6 +22,6 @@ public class Bullet : MonoBehaviour
 
     protected void BulletController()
     {
-        rb2.AddForce(new Vector2(rb2.velocity.x + speedBullet * Time.deltaTime * PlayerController.instance.transform.localScale.x, 0), ForceMode2D.Impulse);
+        rb2.AddForce(new Vector2(rb2.velocity.x + speedBullet * Time.deltaTime, 0), ForceMode2D.Impulse);
     }
 }

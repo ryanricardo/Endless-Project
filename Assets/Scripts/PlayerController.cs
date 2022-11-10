@@ -47,13 +47,11 @@ public class PlayerController : MonoBehaviour
 
             if(t.phase == TouchPhase.Began)
             {
-                touchOne = true;
                 startPos = t.position;
             }
 
             if(t.phase == TouchPhase.Ended)
             {
-                touchOne = false;
                 endPos = t.position;
                 Calcular();
             }
@@ -68,6 +66,12 @@ public class PlayerController : MonoBehaviour
         {
             FunctionJump();
         }
+
+        if(diference.y == diference.x)
+            touchOne = true;
+        else 
+            touchOne = false;
+
     }
 
     protected void FunctionJump()
