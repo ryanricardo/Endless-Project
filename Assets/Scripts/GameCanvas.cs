@@ -79,7 +79,7 @@ public class GameCanvas : MonoBehaviour
 
     protected void CanvasController()
     {
-        textProScore.text = Mathf.FloorToInt(PlayerController.instance.currentScore).ToString() + "(" + PlayerPrefs.GetFloat("recordScore") + ")";
+        textProScore.text = Mathf.FloorToInt(PlayerController.instance.currentScore).ToString() + "(" + Mathf.FloorToInt(PlayerPrefs.GetFloat("recordScore")) + ")";
     }
 
     public void FunctionGameOver()

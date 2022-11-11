@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        PlayerPrefs.SetInt("firstPlayed", 1);
         spawnGround = true;
         Time.timeScale = 1;
     }
@@ -46,7 +47,12 @@ public class GameManager : MonoBehaviour
     protected void GameOverPlayerController()
     {
         if(CODeathPlayer.instance.collisionPlayer)
+        {
+            if(PlayerController.instance.currentScore > PlayerPrefs.GetFloat("recordScore"))
+                PlayerPrefs.SetFloat("recordScore", PlayerController.instance.currentScore);
+
             GameCanvas.instance.FunctionGameOver();
+        }
     }
 
     protected IEnumerator FuctionSpawnGround(float time)

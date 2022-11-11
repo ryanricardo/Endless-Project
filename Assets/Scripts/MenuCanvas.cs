@@ -31,7 +31,6 @@ public class MenuCanvas : MonoBehaviour
         {
             PlayerPrefs.DeleteAll();
             SceneManager.LoadScene("SampleScene");
-
         });
 
         buttonQuit.onClick.AddListener(delegate
