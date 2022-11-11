@@ -75,6 +75,11 @@ public class PlayerController : MonoBehaviour
             FunctionJump();
         }
 
+        if(diference.y < 0)
+        {
+            FunctionDownImpulse();
+        }
+
         if(diference.y == diference.x 
         && freeToShoot)
         {
@@ -88,6 +93,11 @@ public class PlayerController : MonoBehaviour
     protected void FunctionJump()
     {
         rb2.AddForce(new Vector2(0, forceJump), ForceMode2D.Impulse);
+    }
+
+    protected void FunctionDownImpulse()
+    {
+        rb2.AddForce(new Vector2(0, -forceJump), ForceMode2D.Impulse);
     }
 
     public void FunctionImpulseToBack()
