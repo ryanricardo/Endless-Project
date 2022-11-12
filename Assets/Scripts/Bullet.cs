@@ -9,11 +9,12 @@ public class Bullet : MonoBehaviour
 
     [Header("Bullet Atributtes")]
     [SerializeField] protected float speedBullet;
+    [SerializeField] protected float timeAlive;
 
     void Start()
     {
         rb2 = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 2);
+        Destroy(gameObject, timeAlive);
     }
 
     void Update()

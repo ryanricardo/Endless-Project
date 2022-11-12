@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float speedMoviment;
 
     [Header("Atributtes Weapon")]
+    [SerializeField] protected float distanceToShoot;
     [SerializeField] protected float countDownToShoot;
     [SerializeField] protected float timerToShoot;
 
@@ -25,8 +26,13 @@ public class Enemy : MonoBehaviour
     {
         transform.position = new Vector2(transform.position.x - speedMoviment * Time.deltaTime, transform.position.y);
 
+        if(PlayerController.instance.transform.position.x > transform.position.x)
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+        else
+            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
+
         float distancePlayer = Vector2.Distance(transform.position, PlayerController.instance.transform.position);
-        if(distancePlayer <= 4)
+        if(distancePlayer <= distanceToShoot)
         {
             if(timerToShoot >= countDownToShoot)
             {

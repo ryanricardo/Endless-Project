@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     
 
     [Header("Moviment Atributtes")]
-    [SerializeField] protected float forceJump;
+    [SerializeField] protected float forceJumpUp;
+    [SerializeField] protected float forceJumpFront;
     [SerializeField] protected bool checkGround;
 
     [Header("Weapon Atributtes")]
@@ -44,13 +45,13 @@ public class PlayerController : MonoBehaviour
         currentScore += Time.deltaTime;
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    /*void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
             GameManager.instance.FunctionGameOver();
         }
-    }
+    }*/
     
     protected void MovimentController()
     {
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         if(diference.y > diference.x && checkGround)
         {
             FunctionJump();
+            Debug.Log("Jump");
         }
 
         if(diference.y < 0)
@@ -100,12 +102,12 @@ public class PlayerController : MonoBehaviour
 
     protected void FunctionJump()
     {
-        rb2.AddForce(new Vector2(0, forceJump), ForceMode2D.Impulse);
+        rb2.AddForce(new Vector2(forceJumpFront, forceJumpUp), ForceMode2D.Impulse);
     }
 
     protected void FunctionDownImpulse()
     {
-        rb2.AddForce(new Vector2(0, -forceJump), ForceMode2D.Impulse);
+        rb2.AddForce(new Vector2(0, -forceJumpUp), ForceMode2D.Impulse);
     }
 
     public void FunctionImpulseToBack()
