@@ -43,6 +43,14 @@ public class PlayerController : MonoBehaviour
         
         currentScore += Time.deltaTime;
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            GameManager.instance.FunctionGameOver();
+        }
+    }
     
     protected void MovimentController()
     {

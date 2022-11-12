@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [Header("Components")]
     [SerializeField] protected Transform posSpawnGrounds;
     [SerializeField] protected GameObject prefabGround;
+    [SerializeField] protected GameObject prefabEnemy;
     [HideInInspector] public static GameManager instance;
 
     [Header("Grounds Atributtes")]
@@ -48,11 +49,16 @@ public class GameManager : MonoBehaviour
     {
         if(CODeathPlayer.instance.collisionPlayer)
         {
-            if(PlayerController.instance.currentScore > PlayerPrefs.GetFloat("recordScore"))
-                PlayerPrefs.SetFloat("recordScore", PlayerController.instance.currentScore);
-
-            GameCanvas.instance.FunctionGameOver();
+            FunctionGameOver();
         }
+    }
+
+    public void FunctionGameOver()
+    {
+        if(PlayerController.instance.currentScore > PlayerPrefs.GetFloat("recordScore"))
+            PlayerPrefs.SetFloat("recordScore", PlayerController.instance.currentScore);
+
+        GameCanvas.instance.FunctionGameOver();
     }
 
     protected IEnumerator FuctionSpawnGround(float time)

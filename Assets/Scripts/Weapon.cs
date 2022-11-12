@@ -34,6 +34,6 @@ public class Weapon : MonoBehaviour
     {
         Instantiate(prefabBullet, exitBullet.transform.position, Quaternion.identity);
         audioSource.PlayOneShot(clipShoot);
-        PlayerController.instance.FunctionImpulseToBack();
+        //PlayerController.instance.FunctionImpulseToBack();
     }
 }

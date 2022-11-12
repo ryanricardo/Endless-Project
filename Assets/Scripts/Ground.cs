@@ -6,9 +6,13 @@ public class Ground : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] protected float speedMoviment;
+    [SerializeField] protected GameObject prefabEnemy;
+    [SerializeField] public Transform[] posEnemys;
+
 
     void Start()
     {
+        Instantiate(prefabEnemy, posEnemys[Random.Range(0, posEnemys.Length)].transform.position, Quaternion.identity);
         Invoke("DestroyMe", 15);
     }
 
