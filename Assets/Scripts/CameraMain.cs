@@ -11,6 +11,9 @@ public class CameraMain : MonoBehaviour
     [SerializeField] protected float maxPosX;
     [SerializeField] protected float speedCamera;
 
+
+ 
+
     void Awake()
     {
         instance = this;
@@ -18,12 +21,15 @@ public class CameraMain : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(PlayerController.instance.transform.position.x, 0, -10);
+        
+
     }
 
     void Update()
     {
-        ControllerMovimentCamera();
+                transform.position = new Vector3(PlayerController.instance.transform.position.x, 0, -10);
+
+        //ControllerMovimentCamera();
     }
     
     protected void ControllerMovimentCamera()
@@ -35,4 +41,5 @@ public class CameraMain : MonoBehaviour
 
 
     }
+
 }

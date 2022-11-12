@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector2(transform.position.x - speedMoviment * Time.deltaTime, transform.position.y);
+        //transform.position = new Vector2(transform.position.x - speedMoviment * Time.deltaTime, transform.position.y);
 
         if(PlayerController.instance.transform.position.x < transform.position.x)
             transform.localScale = new Vector2(-1, transform.localScale.y);

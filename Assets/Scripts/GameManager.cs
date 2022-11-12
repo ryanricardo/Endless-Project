@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public static GameManager instance;
 
     [Header("Grounds Atributtes")]
+    [SerializeField] protected float distancePlayer;
+    [SerializeField] protected float timeToSpawnGround;
     [HideInInspector] protected bool spawnGround;
+    
 
     
 
@@ -31,6 +34,8 @@ public class GameManager : MonoBehaviour
     {
         SpawnGroundController();
         GameOverPlayerController();
+
+        transform.position = new Vector2(PlayerController.instance.transform.position.x + distancePlayer, transform.position.y);
     }
 
     protected void SpawnGroundController()
@@ -38,9 +43,7 @@ public class GameManager : MonoBehaviour
         if(spawnGround)
         {
             Instantiate(prefabGround, posSpawnGrounds.transform.position, Quaternion.identity);
-            float randomNumber = Random.Range(6f, 7.8f);
-            Debug.Log(randomNumber);
-            StartCoroutine(FuctionSpawnGround(randomNumber));
+            StartCoroutine(FuctionSpawnGround(timeToSpawnGround));
             spawnGround = false;
         }
     }

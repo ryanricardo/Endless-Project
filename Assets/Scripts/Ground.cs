@@ -18,7 +18,7 @@ public class Ground : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector2(transform.position.x - speedMoviment * Time.deltaTime, transform.position.y);
+        //transform.position = new Vector2(transform.position.x - speedMoviment * Time.deltaTime, transform.position.y);
     }
 
     protected void DestroyMe()
