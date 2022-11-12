@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
         else if(PlayerController.instance.transform.position.x > transform.position.x)
             transform.localScale = new Vector2(1, transform.localScale.y);
 
-
+        timerToShoot += Time.deltaTime;
+        
         float distancePlayer = Vector2.Distance(transform.position, PlayerController.instance.transform.position);
         if(distancePlayer <= distanceToShoot)
         {
@@ -40,9 +41,6 @@ public class Enemy : MonoBehaviour
                 FunctionShoot();
                 timerToShoot = 0;
             }
-        }else 
-        {
-            timerToShoot += Time.deltaTime;
         }
     }
 
