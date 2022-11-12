@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected float distancePlayer;
     [SerializeField] protected float timeToSpawnGround;
     [HideInInspector] protected bool spawnGround;
+    [HideInInspector] protected bool firstGroud;
     
 
     
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("firstPlayed", 1);
         spawnGround = true;
+        firstGroud = true;
         Time.timeScale = 1;
     }
 
@@ -42,9 +44,19 @@ public class GameManager : MonoBehaviour
     {
         if(spawnGround)
         {
-            Instantiate(prefabGround, posSpawnGrounds.transform.position, Quaternion.identity);
-            StartCoroutine(FuctionSpawnGround(timeToSpawnGround));
+            if(firstGroud)
+            {
+                Instantiate(prefabGround, posSpawnGrounds.transform.position, Quaternion.identity);
+                StartCoroutine(FuctionSpawnGround(3));
+                firstGroud = false;
+            }else 
+            {
+                Instantiate(prefabGround, posSpawnGrounds.transform.position, Quaternion.identity);
+                StartCoroutine(FuctionSpawnGround(timeToSpawnGround));
+            }
+
             spawnGround = false;
+
         }
     }
 
