@@ -26,10 +26,11 @@ public class Enemy : MonoBehaviour
     {
         transform.position = new Vector2(transform.position.x - speedMoviment * Time.deltaTime, transform.position.y);
 
-        if(PlayerController.instance.transform.position.x > transform.position.x)
-            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-        else
-            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
+        if(PlayerController.instance.transform.position.x < transform.position.x)
+            transform.localScale = new Vector2(-1, transform.localScale.y);
+        else if(PlayerController.instance.transform.position.x > transform.position.x)
+            transform.localScale = new Vector2(1, transform.localScale.y);
+
 
         float distancePlayer = Vector2.Distance(transform.position, PlayerController.instance.transform.position);
         if(distancePlayer <= distanceToShoot)
