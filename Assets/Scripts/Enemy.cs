@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
             transform.localScale = new Vector2(1, transform.localScale.y);
 
         timerToShoot += Time.deltaTime;
-        
+
         float distancePlayer = Vector2.Distance(transform.position, PlayerController.instance.transform.position);
         if(distancePlayer <= distanceToShoot)
         {
@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
 
     protected void FunctionShoot()
     {
+        prefabBullet.GetComponent<EnemyBullet>().enemy = gameObject.GetComponent<Enemy>();
         Instantiate(prefabBullet, bulletOut.transform.position, Quaternion.identity);
     }
 }
