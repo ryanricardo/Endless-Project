@@ -235,8 +235,8 @@ MonoBehaviour:
   prefabBullet: {fileID: 3791773019424867280, guid: 873f133f767f29d47b63147e91a53f99, type: 3}
   bulletOut: {fileID: 5885934049371415828}
   speedMoviment: 3
-  distanceToShoot: 6
-  countDownToShoot: 2
+  distanceToShoot: 5
+  countDownToShoot: 3
   timerToShoot: 0
 --- !u!61 &6600857403410174973
 BoxCollider2D:
