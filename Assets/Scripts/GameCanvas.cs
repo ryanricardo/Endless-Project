@@ -12,8 +12,11 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] protected Button[] buttonContinue;
     [SerializeField] protected Button[] buttonMenu;
     [SerializeField] protected Button[] buttonQuit;
+    [SerializeField] protected Button buttonQuitTutorial;
     [SerializeField] protected TextMeshProUGUI textProScore;
     [SerializeField] protected TextMeshProUGUI textProButtonPause;
+    [SerializeField] protected TextMeshProUGUI textProTutorial;
+    [SerializeField] protected GameObject panelTutorial;
     [SerializeField] protected GameObject panelPause;
     [SerializeField] protected GameObject panelGameOver;
     [HideInInspector] public static GameCanvas instance;
@@ -53,6 +56,11 @@ public class GameCanvas : MonoBehaviour
             SceneManager.LoadScene(1);
         });
 
+        buttonQuitTutorial.onClick.AddListener(delegate
+        {
+            Time.timeScale = 1;
+            panelTutorial.SetActive(false);
+        });
         
 
         for(int i = 0; i < buttonMenu.Length; i++)
@@ -87,4 +95,14 @@ public class GameCanvas : MonoBehaviour
         Time.timeScale = 0;
         panelGameOver.gameObject.SetActive(true);
     }
+
+    public IEnumerator FunctionShowTutorial(string text, bool active, int time, float timeToStart)
+    {
+        yield return new WaitForSeconds(timeToStart);
+        Time.timeScale = time;
+        panelTutorial.SetActive(active);
+        textProTutorial.text = text;
+
+    }
+
 }
