@@ -27,7 +27,7 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector2(PlayerController.instance.transform.position.x + 1, PlayerController.instance.transform.position.y);
+        transform.position = new Vector2(PlayerController.instance.transform.position.x + 0.5f, PlayerController.instance.transform.position.y);
     }
 
     public void FunctionShoot()

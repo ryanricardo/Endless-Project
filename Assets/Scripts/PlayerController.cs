@@ -83,7 +83,6 @@ public class PlayerController : MonoBehaviour
         if(diference.y > diference.x && checkGround)
         {
             FunctionJump();
-            Debug.Log("Jump");
         }
 
         if(diference.y < 0)

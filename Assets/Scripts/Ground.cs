@@ -12,7 +12,9 @@ public class Ground : MonoBehaviour
 
     void Start()
     {
-        Instantiate(prefabEnemy, posEnemys[Random.Range(0, posEnemys.Length)].transform.position, Quaternion.identity);
+        if(prefabEnemy != null)
+            Instantiate(prefabEnemy, posEnemys[Random.Range(0, posEnemys.Length)].transform.position, Quaternion.identity);
+            
         Invoke("DestroyMe", 15);
     }
 
