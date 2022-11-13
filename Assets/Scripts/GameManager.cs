@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] protected Transform posSpawnGrounds;
+    [SerializeField] protected AudioSource audioSource;
     [SerializeField] protected GameObject prefabGround;
     [SerializeField] protected GameObject prefabEnemy;
     [HideInInspector] public static GameManager instance;
@@ -81,6 +82,20 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("recordScore", PlayerController.instance.currentScore);
 
         GameCanvas.instance.FunctionGameOver();
+    }
+
+    public void FunctionControlMySource(int command)
+    {
+        switch(command)
+        {
+            case 0:
+                audioSource.Pause();
+            break;
+
+            case 1:
+                audioSource.UnPause();
+            break;
+        }
     }
 
     protected IEnumerator FuctionSpawnGround(float time)

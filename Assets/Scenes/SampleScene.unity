@@ -5419,6 +5419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posSpawnGrounds: {fileID: 946790603}
+  audioSource: {fileID: 1990182091}
   prefabGround: {fileID: 1861869093821727941, guid: d504f3b9484d6dc498fc9fb36a98274f, type: 3}
   prefabEnemy: {fileID: 7567107631196708643, guid: 1fe1aada46deb6a4ebe8a7eacbfca3e0, type: 3}
   distancePlayer: 0.8

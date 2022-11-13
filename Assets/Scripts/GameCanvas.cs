@@ -32,11 +32,13 @@ public class GameCanvas : MonoBehaviour
         {
             if(!panelPause.activeSelf)
             {
+                GameManager.instance.FunctionControlMySource(0);
                 Time.timeScale = 0;
                 panelPause.gameObject.SetActive(true);
                 textProButtonPause.text = ">";
             }else 
             {
+                GameManager.instance.FunctionControlMySource(1);
                 panelPause.gameObject.SetActive(false);
                 textProButtonPause.text = "I I";
                 Time.timeScale = 1;
@@ -46,6 +48,7 @@ public class GameCanvas : MonoBehaviour
 
         buttonContinue[0].onClick.AddListener(delegate
         {
+            GameManager.instance.FunctionControlMySource(1);
             panelPause.gameObject.SetActive(false);
             textProButtonPause.text = "I I";
             Time.timeScale = 1;
@@ -58,6 +61,7 @@ public class GameCanvas : MonoBehaviour
 
         buttonQuitTutorial.onClick.AddListener(delegate
         {
+            GameManager.instance.FunctionControlMySource(1);
             Time.timeScale = 1;
             panelTutorial.SetActive(false);
         });
@@ -92,6 +96,7 @@ public class GameCanvas : MonoBehaviour
 
     public void FunctionGameOver()
     {
+        GameManager.instance.FunctionControlMySource(0);
         buttonPause.interactable = false;
         Time.timeScale = 0;
         panelGameOver.gameObject.SetActive(true);
@@ -99,6 +104,7 @@ public class GameCanvas : MonoBehaviour
 
     public IEnumerator FunctionShowTutorial(string text, bool active, int time, float timeToStart)
     {
+        GameManager.instance.FunctionControlMySource(0);
         yield return new WaitForSeconds(timeToStart);
         Time.timeScale = time;
         panelTutorial.SetActive(active);
