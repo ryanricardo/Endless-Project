@@ -26,6 +26,7 @@ public class Bullet : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Enemy"))
         {
+            PlayerController.instance.FunctionIncreaseScore(2);
             Destroy(gameObject, 0.1f);
         }
     }

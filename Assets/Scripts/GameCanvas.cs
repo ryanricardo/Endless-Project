@@ -16,6 +16,7 @@ public class GameCanvas : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI textProScore;
     [SerializeField] protected TextMeshProUGUI textProButtonPause;
     [SerializeField] protected TextMeshProUGUI textProTutorial;
+    [SerializeField] protected TextMeshProUGUI textProNewScore;
     [SerializeField] protected GameObject panelTutorial;
     [SerializeField] protected GameObject panelPause;
     [SerializeField] protected GameObject panelGameOver;
@@ -99,16 +100,21 @@ public class GameCanvas : MonoBehaviour
         GameManager.instance.FunctionControlMySource(0);
         buttonPause.interactable = false;
         Time.timeScale = 0;
+        textProNewScore.text = "You make " + $"<color=green>{Mathf.FloorToInt(PlayerController.instance.currentScore)}</color>" +  
+        $"<color=green>{" score"}</color>" +  " and you score record is " + $"<color=green>{Mathf.FloorToInt(PlayerPrefs.GetFloat("recordScore"))}</color>";
         panelGameOver.gameObject.SetActive(true);
     }
 
-    public IEnumerator FunctionShowTutorial(string text, bool active, int time, float timeToStart)
+    public IEnumerator FunctionShowTutorial(string text, bool active, int time, float timeToStart, bool toFinish)
     {
         GameManager.instance.FunctionControlMySource(0);
         yield return new WaitForSeconds(timeToStart);
         Time.timeScale = time;
         panelTutorial.SetActive(active);
         textProTutorial.text = text;
+        
+        if(toFinish)
+            PlayerPrefs.SetInt("completedTutorial", 1);
 
     }
 

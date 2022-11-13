@@ -28,12 +28,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        if(PlayerPrefs.GetInt("firstPlayed") == 0)
+        PlayerPrefs.SetInt("firstPlayed", 1);
+        if(PlayerPrefs.GetInt("completedTutorial") == 0)
         {
-            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Inicialmente para você pular os obstaculos, deslize o dedo para cima.", true, 0, 0.5f));
-            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Para atirar nos inimigos clica apenas uma vez sobre a tela.", true, 0, 3f));
-            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Quando mais longe você for mais score você acumula. ", true, 0, 5f));
-            PlayerPrefs.SetInt("firstPlayed", 1);
+            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Inicialmente para você pular os obstaculos, deslize o dedo para cima.", true, 0, 0.5f,false));
+            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Para atirar nos inimigos clique apenas uma vez sobre a tela.", true, 0, 3f, false));
+            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Eliminar inimigos aumenta seus pontos", true, 0, 3.1f, false));
+            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Quando mais longe você for mais score você acumula. ", true, 0, 5f, false));
+            StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Deslizando o dedo para baixo você tambem pode impulsionar seu personagem para baixo.", true, 0, 5.1f, true));
 
         }
         spawnGround = true;

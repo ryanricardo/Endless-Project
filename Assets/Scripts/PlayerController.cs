@@ -100,6 +100,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void FunctionIncreaseScore(float newScore)
+    {
+        currentScore += newScore;
+    }
+
     protected void FunctionJump()
     {
         rb2.AddForce(new Vector2(forceJumpFront, forceJumpUp), ForceMode2D.Impulse);
