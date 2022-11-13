@@ -14,6 +14,8 @@ public class MenuCanvas : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+        Screen.orientation = ScreenOrientation.Landscape;
         if(PlayerPrefs.GetInt("firstPlayed") == 0)
         {
             buttonContinue.interactable = false;

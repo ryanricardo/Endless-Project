@@ -92,6 +92,7 @@ public class GameCanvas : MonoBehaviour
 
     public void FunctionGameOver()
     {
+        buttonPause.interactable = false;
         Time.timeScale = 0;
         panelGameOver.gameObject.SetActive(true);
     }

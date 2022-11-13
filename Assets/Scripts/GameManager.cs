@@ -26,19 +26,17 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        Time.timeScale = 1;
         if(PlayerPrefs.GetInt("firstPlayed") == 0)
         {
             StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Inicialmente para você pular os obstaculos, deslize o dedo para cima.", true, 0, 0.5f));
             StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Para atirar nos inimigos clica apenas uma vez sobre a tela.", true, 0, 3f));
             StartCoroutine(GameCanvas.instance.FunctionShowTutorial("Quando mais longe você for mais score você acumula. ", true, 0, 5f));
-
-
+            PlayerPrefs.SetInt("firstPlayed", 1);
 
         }
-        //PlayerPrefs.SetInt("firstPlayed", 1);
         spawnGround = true;
         firstGroud = true;
-        //Time.timeScale = 1;
     }
 
     void Update()
